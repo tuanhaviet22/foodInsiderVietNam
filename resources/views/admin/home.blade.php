@@ -1,3 +1,4 @@
+@extends('admin/layout')
 @section('content')
    <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
 
