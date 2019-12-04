@@ -17,4 +17,5 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'admin','namespace' => "Admin"], function () {
     Route::get('home', "Home@index");
+    Route::get('login','Authenticate@Index')->name('login');
 });
