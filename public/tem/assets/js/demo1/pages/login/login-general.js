@@ -73,7 +73,6 @@ var KTLoginGeneral = function() {
             e.preventDefault();
             var btn = $(this);
             var form = $(this).closest('form');           
-
             form.validate({
                 rules: {
                     email: {
@@ -91,17 +90,39 @@ var KTLoginGeneral = function() {
             }
 
             btn.addClass('kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light').attr('disabled', true);
+            console.log(base_url + "/admin/login");
+            
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: base_url + "/admin/login",
+                type : "POST",
+                processData : false,
+                data : new FormData($(this).closest('form')[0]),
+                dataType : "json",
+                success : function(res){
+                    console.log('res');
+                    setTimeout(function() {
+                                    btn.removeClass('kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light').attr('disabled', false);
+                                    showErrorMsg(form, 'danger', 'Incorrect username or password. Please try again.');
+                                }, 2000);
+                } 
+            })
 
-            form.ajaxSubmit({
-                url: '',
-                success: function(response, status, xhr, $form) {
-                	// similate 2s delay
-                	setTimeout(function() {
-	                    btn.removeClass('kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light').attr('disabled', false);
-	                    showErrorMsg(form, 'danger', 'Incorrect username or password. Please try again.');
-                    }, 2000);
-                }
-            });
+            
+            // form.ajaxSubmit({
+            //     url: base_url + "admin/login",
+            //     type : "POST",
+            //     success: function(response, status, xhr, $form) {
+            //         // similate 2s delay
+            //         console.log(response);                    
+            //     	setTimeout(function() {
+	        //             btn.removeClass('kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light').attr('disabled', false);
+	        //             showErrorMsg(form, 'danger', 'Incorrect username or password. Please try again.');
+            //         }, 2000);
+            //     }
+            // });
         });
     }
 
