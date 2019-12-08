@@ -16,9 +16,11 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => 'admin','namespace' => "Admin"], function () {
-    Route::get('home', "Home@index");
+    Route::get('/', "Home@index")->name('admin');
 
     Route::get('login','Authenticate@Index')->name('get_login');
     Route::post('login', 'Authenticate@login')->name('post_login');
-    
+    Route::group(['prefix' => 'manage'], function () {
+        Route::get('add', "ManageAdmin@add_admin_page");
+    });
 });
