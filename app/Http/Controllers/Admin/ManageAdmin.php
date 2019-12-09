@@ -10,4 +10,6 @@ class ManageAdmin extends Controller
     public function add_admin_page(){
         return view('admin/add-admin');
     }
+
+    
 }

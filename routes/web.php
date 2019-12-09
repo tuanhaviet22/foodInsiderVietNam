@@ -21,6 +21,6 @@ Route::group(['prefix' => 'admin','namespace' => "Admin"], function () {
     Route::get('login','Authenticate@Index')->name('get_login');
     Route::post('login', 'Authenticate@login')->name('post_login');
     Route::group(['prefix' => 'manage'], function () {
-        Route::get('add', "ManageAdmin@add_admin_page");
+        Route::get('add', "ManageAdmin@add_admin_page")->name('manage_add');
     });
 });
