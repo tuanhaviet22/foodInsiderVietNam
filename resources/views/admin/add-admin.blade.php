@@ -1,5 +1,8 @@
 @extends('admin.layout')
-@section('content')
+@section('content');
+@push('myscript')
+<script src="{{asset('custom/js/manage_admin.js')}}"></script>
+@endpush
 <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
 
     <!-- begin:: Subheader -->
@@ -120,7 +123,7 @@
                     </div>
 
                     <!--begin::Form-->
-                    <form class="kt-form">
+                    <form class="kt-form" id="register">
                         <div class="kt-portlet__body">
                             <div class="kt-section kt-section--first">
                                 <h3 class="kt-section__title">1. Customer Info:</h3>
@@ -128,14 +131,14 @@
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">Full Name:</label>
                                         <div class="col-lg-6">
-                                            <input type="email" class="form-control" placeholder="Enter full name">
+                                            <input type="input" name="fullname" class="form-control" placeholder="Enter full name">
                                             <span class="form-text text-muted">Please enter your full name</span>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">Email address:</label>
                                         <div class="col-lg-6">
-                                            <input type="email" class="form-control" placeholder="Enter email">
+                                            <input type="email" name="email" class="form-control" placeholder="Enter email">
                                             <span class="form-text text-muted">We'll never share your email with anyone else</span>
                                         </div>
                                     </div>
@@ -149,7 +152,7 @@
                                 <div class="row">
                                     <div class="col-lg-3"></div>
                                     <div class="col-lg-6">
-                                        <button type="reset" class="btn btn-success">Submit</button>
+                                        <button type="button" class="btn btn-success btn-submit-c">Submit</button>
                                         <button type="reset" class="btn btn-secondary">Cancel</button>
                                     </div>
                                 </div>

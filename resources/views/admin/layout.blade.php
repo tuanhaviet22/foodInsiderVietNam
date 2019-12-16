@@ -7,7 +7,6 @@
 
     <!--begin::Base Path (base relative path for assets of this page) -->
     <base href="../">
-
     <!--end::Base Path -->
     <meta charset="utf-8" />
     <title>Food Insider | Dashboard</title>
@@ -103,6 +102,9 @@
 
     <!--end::Layout Skins -->
     <link rel="shortcut icon" href="{{asset('tem/assets/media/logos/favicon.ico')}}" />
+    <script type="text/javascript">
+        var base_url = {!! json_encode(url('/')) !!} + "/" ;
+    </script>
 </head>
 
 <!-- end::Head -->
@@ -2953,6 +2955,7 @@
 <script src="{{asset('tem/assets/js/demo1/pages/dashboard.js')}}" type="text/javascript"></script>
 
     <!--end::Page Scripts -->
+    @stack("myscript")
 </body>
 
 <!-- end::Body -->
