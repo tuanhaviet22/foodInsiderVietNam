@@ -1,4 +1,21 @@
 $(document).ready(function() {
+	 toastr.options = {
+                        "closeButton": true,
+                        "debug": false,
+                        "newestOnTop": false,
+                        "progressBar": false,
+                        "positionClass": "toast-top-right",
+                        "preventDuplicates": false,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "3000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    };
     $(".btn-submit-c").click(function(e) {
         e.preventDefault();
         let form = $('#register');
@@ -18,7 +35,12 @@ $(document).ready(function() {
                 permission: 0
             },
             success: function(response) {
-                console.log(response)
+            	console.log(response)
+                if (response.status == true) {
+              		toastr.success("Tạo người dùng thành công")
+                }else{                	
+                    toastr.error(response.message);
+                }
             }
         })
     })

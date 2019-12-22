@@ -105,10 +105,10 @@
 										<form class="kt-form" action="{{route("post_login")}}" method="POST">
 											@csrf
 												<div class="form-group">
-													<input class="form-control" type="text" placeholder="Email" name="email" autocomplete="off">
+													<input class="form-control email-ip" type="text" placeholder="Email" name="email" autocomplete="off">
 												</div>
 												<div class="form-group">
-													<input class="form-control form-control-last" type="password" placeholder="Password" name="password">
+													<input class="form-control form-control-last pwd-ip" type="password" placeholder="Password"  name="password">
 												</div>
 												<div class="kt-login__extra">
 													<label class="kt-checkbox">

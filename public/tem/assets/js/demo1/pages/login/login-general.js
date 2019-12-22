@@ -72,7 +72,7 @@ var KTLoginGeneral = function() {
         $('#kt_login_signin_submit').click(function(e) {
             e.preventDefault();
             var btn = $(this);
-            var form = $(this).closest('form');           
+            var form = $(this).closest('form');    
             form.validate({
                 rules: {
                     email: {
@@ -89,9 +89,7 @@ var KTLoginGeneral = function() {
                 return;
             }
 
-            btn.addClass('kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light').attr('disabled', true);
-            console.log(base_url + "/admin/login");
-            
+            // btn.addClass('kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light').attr('disabled', true);                    
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -99,10 +97,13 @@ var KTLoginGeneral = function() {
                 url: base_url + "/admin/login",
                 type : "POST",
                 processData : false,
-                data : new FormData($(this).closest('form')[0]),
+                data :{
+                    email : $('.email-ip').val(), 
+                    password : $('.pwd-ip').val()
+                },
                 dataType : "json",
                 success : function(res){
-                    console.log('res');
+                    console.log(res);
                     setTimeout(function() {
                                     btn.removeClass('kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light').attr('disabled', false);
                                     showErrorMsg(form, 'danger', 'Incorrect username or password. Please try again.');
