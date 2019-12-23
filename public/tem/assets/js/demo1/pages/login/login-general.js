@@ -104,7 +104,6 @@ var KTLoginGeneral = function() {
                 dataType : "json",
                 success : function(res){
                     if(res.status){
-                        console.log('success')
                         window.location.href = base_url+ "/admin" ;
                     }else{
                         setTimeout(function() {

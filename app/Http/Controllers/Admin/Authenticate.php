@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 use Auth ;
 use App\Admin\Auth_Model;
 use App\Http\Controllers\Controller;
-// use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\Request;
 
 class Authenticate extends Controller
