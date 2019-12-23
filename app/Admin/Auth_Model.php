@@ -3,8 +3,8 @@
 namespace App\Admin;
 
 use Illuminate\Database\Eloquent\Model;
-
-class Auth_Model extends Model
+use Illuminate\Foundation\Auth\User as Authenticatable;
+class Auth_Model  extends Authenticatable 
 {
     protected $table = "admin";
     protected $fillable = [

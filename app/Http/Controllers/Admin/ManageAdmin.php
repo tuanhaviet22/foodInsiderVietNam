@@ -32,7 +32,7 @@ class ManageAdmin extends Controller
     		Model::create([
    			'username' => $fullname , 
    			'email' => $email, 
-   			'password' => bcrypt(12345), 
+   			'password' => bcrypt($password), 
    			'permission' => $permission
    		]);
    		  $data = [

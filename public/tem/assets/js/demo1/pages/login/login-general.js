@@ -89,25 +89,30 @@ var KTLoginGeneral = function() {
                 return;
             }
 
-            // btn.addClass('kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light').attr('disabled', true);                    
+            btn.addClass('kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light').attr('disabled', true);                    
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 url: base_url + "/admin/login",
                 type : "POST",
-                processData : false,
+                // processData : false,
                 data :{
                     email : $('.email-ip').val(), 
                     password : $('.pwd-ip').val()
                 },
                 dataType : "json",
                 success : function(res){
-                    console.log(res);
-                    setTimeout(function() {
-                                    btn.removeClass('kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light').attr('disabled', false);
-                                    showErrorMsg(form, 'danger', 'Incorrect username or password. Please try again.');
-                                }, 2000);
+                    if(res.status){
+                        console.log('success')
+                        window.location.href = base_url+ "/admin" ;
+                    }else{
+                        setTimeout(function() {
+                            btn.removeClass('kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light').attr('disabled', false);
+                            showErrorMsg(form, 'danger', 'Incorrect username or password. Please try again.');
+                        }, 2000);
+                    }
+                   
                 } 
             })
 
