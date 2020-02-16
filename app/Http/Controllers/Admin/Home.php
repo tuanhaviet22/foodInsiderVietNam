@@ -9,9 +9,10 @@ class Home extends Controller
 {
 	function __construct()
 	{
-		if(Auth::guard('admin')->check()){
-			return redirect('admin/login');
-		};
+		// $this->middleware('admin.auth');
+			// if(Auth::guard('admin')->check()){
+			// 	return redirect('admin/login');
+			// };
 	}
     public function index()
     {

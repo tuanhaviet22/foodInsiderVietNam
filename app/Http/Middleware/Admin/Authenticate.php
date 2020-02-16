@@ -3,7 +3,7 @@
 namespace App\Http\Middleware\Admin;
 
 use Closure;
-
+use Auth ; 
 class Authenticate
 {
     /**
@@ -15,6 +15,11 @@ class Authenticate
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if(Auth::check('admin')){
+            return $next($request);
+        }else{
+            return redirect()->route('get_login');  
+        }
+        
     }
 }
